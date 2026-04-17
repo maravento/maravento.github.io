@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maravento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+[data-theme="light"] {
+  --bg:       #f4f3f0;
+  --surface:  #ffffff;
+  --ink:      #1a1a1a;
+  --ink-2:    #555;
+  --ink-3:    #999;
+  --line:     #e2e0db;
+  --tag-bg:   #f0eeea;
+  --tag-ink:  #888;
+  --shadow:   0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-h: 0 2px 8px rgba(0,0,0,0.09), 0 8px 28px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] {
+  --bg:       #111113;
+  --surface:  #1c1c1f;
+  --ink:      #ececec;
+  --ink-2:    #aaa;
+  --ink-3:    #666;
+  --line:     #2e2e32;
+  --tag-bg:   #252528;
+  --tag-ink:  #777;
+  --shadow:   0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.25);
+  --shadow-h: 0 2px 8px rgba(0,0,0,0.4), 0 8px 28px rgba(0,0,0,0.3);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Figtree', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Header ── */
+header {
+  padding: 2rem 0 2rem;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  animation: up 0.55s ease both;
+}
+
+.header-left {}
+
+.footer-note a.footer-link {
+  color: var(--ink-3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer-note a.footer-link:hover { color: var(--ink); border-color: var(--ink-3); }
+
+.logo {
+  display: block;
+  height: auto;
+  width: 180px;
+  margin-bottom: 1.75rem;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+[data-theme="dark"] .logo {
+  filter: invert(1) brightness(1.8);
+}
+
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+h1 strong { font-weight: 600; }
+
+.bio {
+  font-size: 14px;
+  color: var(--ink-2);
+  max-width: 380px;
+  margin-bottom: 2rem;
+  line-height: 1.75;
+  transition: color 0.3s;
+}
+
+.gh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-3);
+  padding-bottom: 1px;
+  transition: opacity 0.2s, color 0.3s, border-color 0.3s;
+}
+.gh-link:hover { opacity: 0.5; }
+.gh-link svg { width: 14px; height: 14px; }
+
+/* ── Theme toggle ── */
+.toggle {
+  flex-shrink: 0;
+  margin-top: 6px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  width: 52px;
+  height: 28px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s, border-color 0.3s;
+  background: var(--tag-bg);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="dark"] .toggle-thumb {
+  transform: translateX(24px);
+}
+
+.toggle-icon {
+  font-size: 11px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── Projects grid ── */
+.projects {
+  padding: 1rem 0 2rem;
+}
+
+.section-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 2rem;
+  transition: color 0.3s;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.25s, transform 0.25s, background 0.3s, border-color 0.3s;
+  animation: up 0.55s ease both;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-h);
+  transform: translateY(-3px);
+}
+
+.card:nth-child(1) { animation-delay: 0.12s; }
+.card:nth-child(2) { animation-delay: 0.20s; }
+.card:nth-child(3) { animation-delay: 0.28s; }
+.card:nth-child(4) { animation-delay: 0.36s; }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.card-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.2;
+  transition: color 0.3s;
+}
+
+.arrow {
+  font-size: 1rem;
+  color: var(--ink-3);
+  transition: transform 0.2s, color 0.2s;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  margin-top: 2px;
+}
+
+.card:hover .arrow {
+  transform: translate(3px, -3px);
+  color: var(--ink);
+}
+
+.card-desc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-2);
+  line-height: 1.8;
+  flex: 1;
+  margin-bottom: 1.25rem;
+  transition: color 0.3s;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tag-ink);
+  background: var(--tag-bg);
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  color: var(--ink-3);
+  transition: color 0.3s;
+}
+
+.stat svg { width: 11px; height: 11px; }
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  transition: border-color 0.3s;
+}
+
+.footer-note {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  transition: color 0.3s;
+}
+
+/* ── Animation ── */
+@keyframes up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .page { padding: 0 1.25rem; }
+  header { padding: 3.5rem 0 3rem; flex-direction: row; }
+  h1 { font-size: 2.8rem; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="header-left">
+      <img src="data:image/png;base64,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" alt="Maravento" class="logo">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:0.25rem;">
+      <a href="https://github.com/maravento" target="_blank" rel="noopener">
+        <img src="https://img.shields.io/badge/status-maintained-purple.svg" alt="status-maintained" style="height:20px;">
+      </a>
+      <a href="https://twitter.com/maraventostudio" target="_blank" rel="noopener">
+        <img src="https://img.shields.io/twitter/follow/maraventostudio.svg?style=social" alt="Twitter Follow" style="height:20px;">
+      </a>
+    </div>
+    </div>
+
+    <button class="toggle" id="themeToggle" aria-label="Toggle theme">
+      <div class="toggle-thumb">
+        <span class="toggle-icon" id="toggleIcon">☀</span>
+      </div>
+    </button>
+  </header>
+
+  <section class="projects">
+    <p class="section-label">Projects</p>
+    <div class="grid">
+
+      <a href="https://github.com/maravento/blackweb" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">Blackweb</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Massive domain blocklist for Squid-Cache. Aggregates and unifies public blocklists covering malware, ransomware, spyware, ads, and adult content — deduplicated and ready to drop into your Squid ACL.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Squid</span>
+            <span class="tag">Blocklist</span>
+            <span class="tag">Shell</span>
+          </div>
+          <div class="stats">
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>369
+            </span>
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>83
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/blackip" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">Blackip</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">IPv4 blocklist for Ipset and Squid-Cache. Merges public IP blocklists into a single clean file compatible with Iptables/Netfilter via IPSET and Squid proxy, with SHA-256 integrity verification.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Ipset</span>
+            <span class="tag">Iptables</span>
+            <span class="tag">Shell</span>
+          </div>
+          <div class="stats">
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>111
+            </span>
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>24
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/winexternal" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">WinExternal</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Essential offline packages for Windows bundled into one silent, unattended launcher. Compiles Microsoft redistributables — DirectX, .NET Core, .NET Framework, Visual C++ — for Windows 10/11 x64.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Windows</span>
+            <span class="tag">.NET</span>
+            <span class="tag">Visual C++</span>
+          </div>
+          <div class="stats">
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>5
+            </span>
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>2
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/vault" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">Vault</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">A curated collection of cross-platform scripts and utilities for Linux and Windows. Covers automation, VirtualBox tools, telemetry management, Rclone helpers — organized as self-contained subprojects.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Bash</span>
+            <span class="tag">Batch</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="stats">
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>7
+            </span>
+            <span class="stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>3
+            </span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-note">
+      Dual-licensed &nbsp;·&nbsp;
+      <a href="https://www.gnu.org/licenses/gpl.txt" target="_blank" rel="noopener" class="footer-link">GPLv3</a>
+      &nbsp;for scripts &amp; binaries &nbsp;·&nbsp;
+      <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener" class="footer-link">CC BY-NC-ND 4.0</a>
+      &nbsp;for docs &amp; modules
+    </span>
+    <a href="https://maravento.com" target="_blank" rel="noopener" style="font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3);text-decoration:none;letter-spacing:0.06em;transition:color 0.3s;">maravento.com ↗</a>
+  </footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const icon   = document.getElementById('toggleIcon');
+  const html   = document.documentElement;
+
+  const saved = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  icon.textContent = saved === 'dark' ? '☽' : '☀';
+
+  toggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next    = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    icon.textContent = next === 'dark' ? '☽' : '☀';
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
