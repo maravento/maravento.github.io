@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maravento</title>
+
+<!-- SEO -->
+<meta name="description" content="Open-source security tools and cross-platform utilities for sysadmins and power users. Blocklists, Windows packages, scripts and more.">
+<meta name="author" content="Maravento">
+<link rel="canonical" href="https://maravento.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maravento.com/">
+<meta property="og:title" content="Maravento">
+<meta property="og:description" content="Open-source security tools and cross-platform utilities for sysadmins and power users.">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@maraventostudio">
+<meta name="twitter:title" content="Maravento">
+<meta name="twitter:description" content="Open-source security tools and cross-platform utilities for sysadmins and power users.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -38,7 +56,7 @@
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Figtree', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 15px;
   line-height: 1.65;
   min-height: 100vh;
@@ -128,7 +146,6 @@ h1 strong { font-weight: 600; }
 .toggle {
   flex-shrink: 0;
   margin-top: 6px;
-  background: none;
   border: 1px solid var(--line);
   border-radius: 99px;
   width: 52px;
@@ -177,6 +194,33 @@ h1 strong { font-weight: 600; }
   color: var(--ink-3);
   margin-bottom: 2rem;
   transition: color 0.3s;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.nav-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-2);
+  background: var(--tag-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 14px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.nav-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 
 .grid {
@@ -344,7 +388,7 @@ footer {
         <img src="https://img.shields.io/twitter/follow/maraventostudio.svg?style=social" alt="Twitter Follow" style="height:20px;">
       </a>
     </div>
-    </div>
+    </div><!-- /.header-left -->
 
     <button class="toggle" id="themeToggle" aria-label="Toggle theme">
       <div class="toggle-thumb">
@@ -354,7 +398,11 @@ footer {
   </header>
 
   <section class="projects">
-    <p class="section-label">Projects</p>
+    <div class="nav-buttons">
+      <a href="https://www.maravento.com" target="_blank" rel="noopener" class="nav-btn">Main</a>
+      <a href="https://github.com/maravento" target="_blank" rel="noopener" class="nav-btn">Projects</a>
+      <a href="https://gitlab.com/maravento" target="_blank" rel="noopener" class="nav-btn">Mirror</a>
+    </div>
     <div class="grid">
 
       <a href="https://github.com/maravento/blackweb" target="_blank" rel="noopener" class="card">
@@ -470,7 +518,8 @@ footer {
   const icon   = document.getElementById('toggleIcon');
   const html   = document.documentElement;
 
-  const saved = localStorage.getItem('theme') || 'light';
+  const saved = localStorage.getItem('theme')
+    || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   html.setAttribute('data-theme', saved);
   icon.textContent = saved === 'dark' ? '☽' : '☀';
 
