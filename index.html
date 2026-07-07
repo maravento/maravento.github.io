@@ -407,73 +407,94 @@ footer {
       <a href="https://github.com/maravento" target="_blank" rel="noopener" class="nav-btn">Projects</a>
       <a href="https://gitlab.com/maravento" target="_blank" rel="noopener" class="nav-btn">Mirror</a>
     </div>
-    <div class="grid">
-
-      <a href="https://github.com/maravento/blackweb" target="_blank" rel="noopener" class="card">
-        <div class="card-top">
-          <span class="card-name">Blackweb</span>
-          <span class="arrow">↗</span>
-        </div>
-        <p class="card-desc">Massive domain blocklist for Squid-Cache. Aggregates and unifies public blocklists covering malware, ransomware, spyware, ads, and adult content — deduplicated and ready to drop into your Squid ACL.</p>
-        <div class="card-footer">
-          <div class="tags">
-            <span class="tag">Squid</span>
-            <span class="tag">Blocklist</span>
-            <span class="tag">Shell</span>
-          </div>
-          <div class="stats">
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>369
-            </span>
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>83
-            </span>
-          </div>
-        </div>
-      </a>
+<div class="grid">
 
       <a href="https://github.com/maravento/blackip" target="_blank" rel="noopener" class="card">
         <div class="card-top">
           <span class="card-name">Blackip</span>
           <span class="arrow">↗</span>
         </div>
-        <p class="card-desc">IPv4 blocklist for Ipset and Squid-Cache. Merges public IP blocklists into a single clean file compatible with Iptables/Netfilter via IPSET and Squid proxy, with SHA-256 integrity verification.</p>
+        <p class="card-desc">IPv4 blocklist for IPSET and Squid. Aggregates and normalizes public IP blocklists into a single ACL for firewall and proxy filtering.</p>
         <div class="card-footer">
           <div class="tags">
             <span class="tag">Ipset</span>
             <span class="tag">Iptables</span>
             <span class="tag">Shell</span>
           </div>
-          <div class="stats">
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>111
-            </span>
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>24
-            </span>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/blackweb" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">Blackweb</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Domain blocklist for Squid. Aggregates and normalizes public domain blocklists into a single ACL for web content filtering.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Squid</span>
+            <span class="tag">Blocklist</span>
+            <span class="tag">Shell</span>
           </div>
         </div>
       </a>
 
-      <a href="https://github.com/maravento/winexternal" target="_blank" rel="noopener" class="card">
+      <a href="https://github.com/maravento/proxymon" target="_blank" rel="noopener" class="card">
         <div class="card-top">
-          <span class="card-name">WinExternal</span>
+          <span class="card-name">Proxymon</span>
           <span class="arrow">↗</span>
         </div>
-        <p class="card-desc">Essential offline packages for Windows bundled into one silent, unattended launcher. Compiles Microsoft redistributables — DirectX, .NET Core, .NET Framework, Visual C++ — for Windows 10/11 x64.</p>
+        <p class="card-desc">Squid monitoring suite. Collects traffic statistics and generates reports from Squid access logs through a web interface.</p>
         <div class="card-footer">
           <div class="tags">
-            <span class="tag">Windows</span>
-            <span class="tag">.NET</span>
-            <span class="tag">Visual C++</span>
+            <span class="tag">Squid</span>
+            <span class="tag">Monitoring</span>
+            <span class="tag">PHP</span>
           </div>
-          <div class="stats">
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>5
-            </span>
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>2
-            </span>
+        </div>
+      </a>
+
+    <a href="https://github.com/maravento/pydhcp" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">PyDHCP</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Python-based DHCP server. Replaces ISC DHCP with compatibility for existing configuration and lease files on Linux.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">DHCP</span>
+            <span class="tag">Network</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/smbstack" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">SMBstack</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Samba deployment toolkit. Automates installation, configuration, hardening, and maintenance of SMB/CIFS services on Linux.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">SMB</span>
+            <span class="tag">Storage</span>
+            <span class="tag">Shell</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/uhotspot" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">uhotspot</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">UniFi hotspot automation toolkit. Synchronizes guest authorization with DHCP and firewall rules for self-hosted captive portals..</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">WiFi</span>
+            <span class="tag">Hotspot</span>
+            <span class="tag">Shell</span>
           </div>
         </div>
       </a>
@@ -483,20 +504,27 @@ footer {
           <span class="card-name">Vault</span>
           <span class="arrow">↗</span>
         </div>
-        <p class="card-desc">A curated collection of cross-platform scripts and utilities for Linux and Windows. Covers automation, VirtualBox tools, telemetry management, Rclone helpers — organized as self-contained subprojects.</p>
+        <p class="card-desc">Collection of system administration tools. Provides cross-platform utilities, scripts, and documentation for security, networking, and infrastructure management.</p>
         <div class="card-footer">
           <div class="tags">
             <span class="tag">Bash</span>
             <span class="tag">Batch</span>
             <span class="tag">Python</span>
           </div>
-          <div class="stats">
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>7
-            </span>
-            <span class="stat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>3
-            </span>
+        </div>
+      </a>
+
+      <a href="https://github.com/maravento/winexternal" target="_blank" rel="noopener" class="card">
+        <div class="card-top">
+          <span class="card-name">WinExternal</span>
+          <span class="arrow">↗</span>
+        </div>
+        <p class="card-desc">Offline Windows package repository. Bundles Microsoft runtimes and redistributables into a single unattended installer for Windows deployment.</p>
+        <div class="card-footer">
+          <div class="tags">
+            <span class="tag">Windows</span>
+            <span class="tag">.NET</span>
+            <span class="tag">Visual C++</span>
           </div>
         </div>
       </a>
